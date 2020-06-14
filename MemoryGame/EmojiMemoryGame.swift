@@ -1,0 +1,47 @@
+//
+//  EmojiMemoryGame.swift
+//  MemoryGame
+//
+//  Created by Muchen He on 2020-05-31.
+//  Copyright © 2020 Muchen He. All rights reserved.
+//
+
+// VIEW MODEL
+
+import Foundation
+import SwiftUI
+
+
+class EmojiMemoryGame {
+    
+    // private(set) makes the model is read-only and can only be mutated by EmojiMemoryGame view model itself
+    // private makes it so no view can have access to this model
+    private var model: MemoryGame<String> = createMemoryGame()
+    
+    // Static function is not defined after initialization
+    static func createMemoryGame() -> MemoryGame<String> {
+        let availEmojis = Array("😂🏳️‍🌈🗿😎⚰️👅💎♠️♣️♥️♦️")
+        
+        // Have the game start up with random number of pairs (between 2 to 5)
+        let numPairs = Int.random(in: 2...5)
+        
+        // If a function call's last parameter has {}
+        // then it can be put outside of the () and ignore
+        // parameter name
+        return MemoryGame<String>(numOfPairs: numPairs) { index in
+            return String(availEmojis[index])
+        }
+    }
+    
+    // Like "getters"
+    var cards: [MemoryGame<String>.Card] {
+        self.model.cards
+    }
+    
+    // MARK: - Intents
+    // User interacts with model with "intents"
+    
+    func choose(card: MemoryGame<String>.Card) {
+        self.model.choose(card: card)
+    }
+}
