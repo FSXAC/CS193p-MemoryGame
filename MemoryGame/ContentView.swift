@@ -24,7 +24,10 @@ struct ContentView: View {
                     })
             }
             .foregroundColor(.blue)
-            .font(.largeTitle)
+                
+            // Only use large title font if there are less than 5 pairs of cards
+            // we can perhaps get this data from the game viewmodel
+            .font(self.gameViewModel.numOfPair < 5 ? .largeTitle : .body)
         }
     }
 }
@@ -44,9 +47,9 @@ struct CardView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        let game = EmojiMemoryGame()
-        return ContentView(gameViewModel: game)
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let game = EmojiMemoryGame()
+//        return ContentView(gameViewModel: game)
+//    }
+//}

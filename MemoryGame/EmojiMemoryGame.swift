@@ -29,13 +29,19 @@ class EmojiMemoryGame {
         // then it can be put outside of the () and ignore
         // parameter name
         return MemoryGame<String>(numOfPairs: numPairs) { index in
-            return String(availEmojis[index])
+            
+            // Select a random item in the available emojis array and use that
+            return String(availEmojis.shuffled()[index])
         }
     }
     
     // Like "getters"
     var cards: [MemoryGame<String>.Card] {
         self.model.cards
+    }
+    
+    var numOfPair: Int {
+        Int(self.model.cards.count / 2)
     }
     
     // MARK: - Intents
