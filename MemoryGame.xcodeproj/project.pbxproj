@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BEF2E5F62484B112001A87C8 /* MemoryGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEF2E5F62484B112001A87C8 /* CS 193P Memory Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CS 193P Memory Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF2E5F92484B112001A87C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEF2E5FB2484B112001A87C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BEF2E5FD2484B112001A87C8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,7 +52,7 @@
 		BEF2E5F72484B112001A87C8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BEF2E5F62484B112001A87C8 /* MemoryGame.app */,
+				BEF2E5F62484B112001A87C8 /* CS 193P Memory Game.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,7 +98,7 @@
 			);
 			name = MemoryGame;
 			productName = MemoryGame;
-			productReference = BEF2E5F62484B112001A87C8 /* MemoryGame.app */;
+			productReference = BEF2E5F62484B112001A87C8 /* CS 193P Memory Game.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -301,8 +301,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.muchenhe.MemoryGame;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.muchenhe.CS193PMemoryGame;
+				PRODUCT_NAME = "CS 193P Memory Game";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -321,8 +321,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.muchenhe.MemoryGame;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.muchenhe.CS193PMemoryGame;
+				PRODUCT_NAME = "CS 193P Memory Game";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

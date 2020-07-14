@@ -47,9 +47,9 @@ struct CardView: View {
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let game = EmojiMemoryGame()
-//        return ContentView(gameViewModel: game)
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        let game = EmojiMemoryGame()
+        return ContentView(gameViewModel: game)
+    }
+}
