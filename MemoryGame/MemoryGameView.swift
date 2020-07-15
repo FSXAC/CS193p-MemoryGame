@@ -35,26 +35,34 @@ struct MemoryGameView: View {
 
 struct CardView: View {
     
-    // MARK:  Drawing constants
-    let cardRadius: CGFloat = 8.0
-    let fontSizeScale: CGFloat = 0.8
-    
     var card: MemoryGameModel<String>.Card
+    
     var body: some View {
         
-        // NOTE: Use Geometry reader to obtain the geometry of the containe
+        // NOTE: Use Geometry reader to obtain the geometry of the container
         GeometryReader { geometry in
-            ZStack {
-                if self.card.isFaceUp {
-                    RoundedRectangle(cornerRadius: self.cardRadius)
-                        .fill(Color.white)
-                    Text(self.card.content)
-                } else {
-                    RoundedRectangle(cornerRadius: self.cardRadius).fill()
-                }
-            }
-            .font(.system(size: min(geometry.size.width, geometry.size.height) * self.fontSizeScale))
+            self.body(for: geometry.size)
         }
+    }
+    
+    func body(for geomSize: CGSize) -> some View {
+        ZStack {
+            if self.card.isFaceUp {
+                RoundedRectangle(cornerRadius: self.cardRadius)
+                    .fill(Color.white)
+                Text(self.card.content)
+            } else {
+                RoundedRectangle(cornerRadius: self.cardRadius).fill()
+            }
+        }
+        .font(.system(size: getFontSize(for: geomSize)))
+    }
+    
+    // MARK: - Drawing constants
+    let cardRadius: CGFloat = 8.0
+    let fontSizeScale: CGFloat = 0.8
+    func getFontSize(for geomSize: CGSize) -> CGFloat {
+        min(geomSize.width, geomSize.height) * self.fontSizeScale
     }
 }
 
