@@ -18,31 +18,42 @@ struct MemoryGameView: View {
         VStack {
             ForEach(gameViewModel.cards) { card in
                 CardView(card: card)
-                    .shadow(color: .gray, radius: 10, x: 0, y: 7)
+                    .shadow(color: .gray, radius: self.shadowSize, x: self.shadowOffsetX, y: self.shadowOffsetY)
                     .onTapGesture(perform: {
                         self.gameViewModel.choose(card: card)
                     })
             }
             .foregroundColor(.blue)
-                
-            // Only use large title font if there are less than 5 pairs of cards
-            // we can perhaps get this data from the game viewmodel
-            .font(self.gameViewModel.numOfPair < 5 ? .largeTitle : .body)
         }
     }
+    
+    // MARK: - Drawing constants
+    let shadowSize: CGFloat = 10.0
+    let shadowOffsetX: CGFloat = 0.0
+    let shadowOffsetY: CGFloat = 6.0
 }
 
 struct CardView: View {
+    
+    // MARK:  Drawing constants
+    let cardRadius: CGFloat = 8.0
+    let fontSizeScale: CGFloat = 0.8
+    
     var card: MemoryGameModel<String>.Card
     var body: some View {
-        ZStack {
-            if card.isFaceUp {
-                RoundedRectangle(cornerRadius: 3.0)
-                    .fill(Color.white)
-                Text(card.content)
-            } else {
-                RoundedRectangle(cornerRadius: 3.0).fill()
+        
+        // NOTE: Use Geometry reader to obtain the geometry of the containe
+        GeometryReader { geometry in
+            ZStack {
+                if self.card.isFaceUp {
+                    RoundedRectangle(cornerRadius: self.cardRadius)
+                        .fill(Color.white)
+                    Text(self.card.content)
+                } else {
+                    RoundedRectangle(cornerRadius: self.cardRadius).fill()
+                }
             }
+            .font(.system(size: min(geometry.size.width, geometry.size.height) * self.fontSizeScale))
         }
     }
 }
