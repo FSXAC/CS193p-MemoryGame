@@ -11,7 +11,7 @@
 import Foundation
 
 // Templating using <T>
-struct MemoryGame<CardContentType> {
+struct MemoryGameModel<CardContentType> {
     var cards: [Card]
     
     init(numOfPairs: Int, cardContentFactory: (Int) -> CardContentType) {

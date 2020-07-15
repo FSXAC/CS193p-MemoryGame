@@ -8,11 +8,11 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MemoryGameView: View {
     
     // pointer to the EmojiMemoryGame view model class
     // we create this when the scene is created (up in sceneDelegate)
-    var gameViewModel: EmojiMemoryGame
+    var gameViewModel: EmojiMemoryGameViewModel
     
     var body: some View {
         VStack {
@@ -33,7 +33,7 @@ struct ContentView: View {
 }
 
 struct CardView: View {
-    var card: MemoryGame<String>.Card
+    var card: MemoryGameModel<String>.Card
     var body: some View {
         ZStack {
             if card.isFaceUp {
@@ -49,7 +49,7 @@ struct CardView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let game = EmojiMemoryGame()
-        return ContentView(gameViewModel: game)
+        let game = EmojiMemoryGameViewModel()
+        return MemoryGameView(gameViewModel: game)
     }
 }

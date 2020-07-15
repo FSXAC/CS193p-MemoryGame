@@ -5,6 +5,8 @@
 //  Created by Muchen He on 2020-05-31.
 //  Copyright © 2020 Muchen He. All rights reserved.
 //
+//  This is the entry point of the app
+//  The AppDelegate class makes the application and assigns the scene to be the default scene (see SceneDelagate)
 
 import UIKit
 
