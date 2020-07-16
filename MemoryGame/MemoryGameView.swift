@@ -15,16 +15,21 @@ struct MemoryGameView: View {
     var gameViewModel: EmojiMemoryGameViewModel
     
     var body: some View {
-        VStack {
-            ForEach(gameViewModel.cards) { card in
-                CardView(card: card)
-                    .shadow(color: .gray, radius: self.shadowSize, x: self.shadowOffsetX, y: self.shadowOffsetY)
-                    .onTapGesture(perform: {
-                        self.gameViewModel.choose(card: card)
-                    })
-            }
-            .foregroundColor(.blue)
+        
+        // We want to replace this VStack with a GridView custom SwiftUIView
+        GridView(gameViewModel.cards) { card in
+            CardView(card: card)
+                .shadow(color: .gray, radius: self.shadowSize, x: self.shadowOffsetX, y: self.shadowOffsetY)
+                .onTapGesture(perform: {
+                    
+                    // Need explicit self. because this function happens
+                    // some time in the future and we need to capture
+                    // the self.
+                    // And this self. isn't allocated in the heap.
+                    self.gameViewModel.choose(card: card)
+                })
         }
+        .foregroundColor(.blue)
     }
     
     // MARK: - Drawing constants
