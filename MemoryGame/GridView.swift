@@ -56,5 +56,8 @@ struct GridView<Item, ItemView>: View where Item: Identifiable, ItemView: View {
                 return index
             }
         }
+        
+        // FIXME
+        return -1
     }
 }

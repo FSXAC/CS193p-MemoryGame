@@ -26,8 +26,23 @@ struct MemoryGameModel<CardContentType> {
         cards.shuffle()
     }
     
-    func choose(card: Card) {
+    // Function that changes self state should be mutating
+    mutating func choose(card: Card) {
         print("Chosen \(card)")
+        let chosenIndex: Int = self.getIndex(of: card)
+        
+        self.cards[chosenIndex].isFaceUp = !self.cards[chosenIndex].isFaceUp
+    }
+    
+    func getIndex(of card: Card) -> Int {
+        for index in 0..<self.cards.count {
+            if self.cards[index].id == card.id {
+                return index
+            }
+        }
+        
+        // FIXME
+        return -1
     }
     
     struct Card: Identifiable {
