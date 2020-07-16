@@ -12,7 +12,15 @@ struct MemoryGameView: View {
     
     // pointer to the EmojiMemoryGame view model class
     // we create this when the scene is created (up in sceneDelegate)
-    var gameViewModel: EmojiMemoryGameViewModel
+    
+    // @ObservedObject wrapper will see that the viewmodel has a published
+    // object inside it, and every time a "objectWillChange.send()" occurs,
+    // the view will redraw.
+    
+    // Note that not everything will redraw on screen, Swift is smart enough
+    // to know which property has changed (hence the Identifiable property
+    // required for ForEach etc.)
+    @ObservedObject var gameViewModel: EmojiMemoryGameViewModel
     
     var body: some View {
         
@@ -23,11 +31,11 @@ struct MemoryGameView: View {
                 .onTapGesture(perform: {
                     
                     // Need explicit self. because this function happens
-                    // some time in the future and we need to capture
-                    // the self.
+                    // some time in the future and we need to capture self
                     // And this self. isn't allocated in the heap.
                     self.gameViewModel.choose(card: card)
                 })
+                .padding()
         }
         .foregroundColor(.blue)
     }

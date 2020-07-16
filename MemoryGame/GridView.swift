@@ -45,7 +45,7 @@ struct GridView<Item, ItemView>: View where Item: Identifiable, ItemView: View {
         
         // For each item, we can access gridlayout's itemSize property
         // to get the item size, and calling frame() allow us to resize it
-        itemsView(item)
+        return itemsView(item)
             .frame(width: layout.itemSize.width, height: layout.itemSize.height)
             .position(layout.location(ofItemAt: index))
     }

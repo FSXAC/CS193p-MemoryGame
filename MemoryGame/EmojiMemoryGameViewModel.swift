@@ -11,19 +11,24 @@
 import Foundation
 import SwiftUI
 
-
-class EmojiMemoryGameViewModel {
+// We need to add observedObject protocol
+// for this viewmodel to participate and anticipate a change
+// in the model
+class EmojiMemoryGameViewModel: ObservableObject {
     
     // private(set) makes the model is read-only and can only be mutated by EmojiMemoryGame view model itself
     // private makes it so no view can have access to this model
-    private var model: MemoryGameModel<String> = createMemoryGame()
+    
+    // "@Published" property wrapper will automatically call
+    // objectWillChange.send()
+    @Published private var model: MemoryGameModel<String> = createMemoryGame()
     
     // Static function is not defined after initialization
     static func createMemoryGame() -> MemoryGameModel<String> {
         let availEmojis = Array("😂🏳️‍🌈🗿😎⚰️👅💎♠️♣️♥️♦️")
         
         // Have the game start up with random number of pairs (between 2 to 5)
-        let numPairs = Int.random(in: 2...5)
+        let numPairs = Int.random(in: 3...5)
         
         // If a function call's last parameter has {}
         // then it can be put outside of the () and ignore
@@ -35,6 +40,7 @@ class EmojiMemoryGameViewModel {
         }
     }
     
+    // MARK: - Access to the model
     // Like "getters"
     var cards: [MemoryGameModel<String>.Card] {
         self.model.cards
@@ -48,6 +54,11 @@ class EmojiMemoryGameViewModel {
     // User interacts with model with "intents"
     
     func choose(card: MemoryGameModel<String>.Card) {
+        
+        // This make observable object primed for change
+        // objectWillChange.send()
+        // But our model is @Published, so we don't need to do that
+
         self.model.choose(card: card)
     }
 }
