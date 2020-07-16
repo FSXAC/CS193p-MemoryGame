@@ -11,6 +11,8 @@ import Foundation
 // This extends the Array such that we can invoke "firstIndex"
 // to retrieve the first index of a matching element
 
+// Note that the protocol constrains only makes this extension available
+// for Array Don't-Care Element type that complies with Identifiable protocol
 extension Array where Element: Identifiable {
     func indexOf(matching: Element) -> Int {
         for index in 0..<self.count {

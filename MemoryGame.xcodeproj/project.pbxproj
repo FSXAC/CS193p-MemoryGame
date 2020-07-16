@@ -47,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE59A32F24C0F1BD00462F33 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BE59A32D24C0F0BA00462F33 /* Array+Identifiable.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		BEF2E5ED2484B112001A87C8 = {
 			isa = PBXGroup;
 			children = (
@@ -73,7 +81,7 @@
 				BEF2E5FD2484B112001A87C8 /* MemoryGameView.swift */,
 				BE59A32924C0DD3500462F33 /* GridView.swift */,
 				BE59A32B24C0E30A00462F33 /* GridViewLayout.swift */,
-				BE59A32D24C0F0BA00462F33 /* Array+Identifiable.swift */,
+				BE59A32F24C0F1BD00462F33 /* Extension */,
 				BEF2E5FF2484B114001A87C8 /* Assets.xcassets */,
 				BEF2E6042484B114001A87C8 /* LaunchScreen.storyboard */,
 				BEF2E6072484B114001A87C8 /* Info.plist */,

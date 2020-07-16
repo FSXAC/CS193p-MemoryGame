@@ -29,20 +29,9 @@ struct MemoryGameModel<CardContentType> {
     // Function that changes self state should be mutating
     mutating func choose(card: Card) {
         print("Chosen \(card)")
-        let chosenIndex: Int = self.getIndex(of: card)
+        let chosenIndex: Int = self.cards.indexOf(matching: card)
         
         self.cards[chosenIndex].isFaceUp = !self.cards[chosenIndex].isFaceUp
-    }
-    
-    func getIndex(of card: Card) -> Int {
-        for index in 0..<self.cards.count {
-            if self.cards[index].id == card.id {
-                return index
-            }
-        }
-        
-        // FIXME
-        return -1
     }
     
     struct Card: Identifiable {
