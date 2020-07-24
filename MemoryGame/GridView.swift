@@ -40,10 +40,8 @@ struct GridView<Item, ItemView>: View where Item: Identifiable, ItemView: View {
     }
     
     func body(for item: Item, in layout: GridViewLayout) -> some View {
-        let index = items.indexOf(matching: item)
+        let index = items.indexOf(matching: item)!
         
-        // For each item, we can access gridlayout's itemSize property
-        // to get the item size, and calling frame() allow us to resize it
         return itemsView(item)
             .frame(width: layout.itemSize.width, height: layout.itemSize.height)
             .position(layout.location(ofItemAt: index))

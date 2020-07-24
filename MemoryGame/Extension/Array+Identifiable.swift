@@ -14,14 +14,13 @@ import Foundation
 // Note that the protocol constrains only makes this extension available
 // for Array Don't-Care Element type that complies with Identifiable protocol
 extension Array where Element: Identifiable {
-    func indexOf(matching: Element) -> Int {
+    func indexOf(matching: Element) -> Int? {
         for index in 0..<self.count {
             if self[index].id == matching.id {
                 return index
             }
         }
-        
-        // FIXME
-        return -1
+
+        return nil
     }
 }

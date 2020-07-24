@@ -65,7 +65,9 @@ struct CardView: View {
                     .fill(Color.white)
                 Text(self.card.content)
             } else {
-                RoundedRectangle(cornerRadius: self.cardRadius).fill()
+                if !card.isMatched {
+                    RoundedRectangle(cornerRadius: self.cardRadius).fill()
+                }
             }
         }
         .font(.system(size: getFontSize(for: geomSize)))

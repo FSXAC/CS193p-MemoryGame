@@ -33,10 +33,11 @@ class EmojiMemoryGameViewModel: ObservableObject {
         // If a function call's last parameter has {}
         // then it can be put outside of the () and ignore
         // parameter name
+        let shuffledEmojis = availEmojis.shuffled()
         return MemoryGameModel<String>(numOfPairs: numPairs) { index in
-            
+
             // Select a random item in the available emojis array and use that
-            return String(availEmojis.shuffled()[index])
+            return String(shuffledEmojis[index])
         }
     }
     
